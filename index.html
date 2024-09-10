@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .header {
+            background-color: #ff5722;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 700;
+            flex: 1;
+            text-align: left;
+        }
+
+        .header input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 50%;
+            max-width: 300px;
+        }
+
+        .nav-bar {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 24px;
+            width: 30px;
+            margin-right: 20px;
+        }
+
+        .nav-bar div {
+            background-color: white;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: #ff5722;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .menu a:hover {
+            background-color: #e64a19;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ad-placeholder {
+            height: 200px;
+            margin: 20px 0;
+            border: px dashed #ffc107;
+            border-radius: 8px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff5722;
+            font-size: 18px;
+        }
+
+        .instruction {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .instruction span {
+            color: #ff5722;
+        }
+
+        .icon {
+            font-size: 24px;
+            color: #ff9800;
+            margin: 0 5px;
+        }
+
+        #timer {
+            font-size: 24px;
+            color: #ff5722;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .text-section {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-section h2 {
+            color: #ff5722;
+            font-size: 22px;
+        }
+
+        .text-section p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background-color: #ff5722;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        #continue-btn {
+            display: none;
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #continue-btn:hover {
+            background-color: #e64a19;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="nav-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>Food Blog</h1>
+        <input type="text" placeholder="Search...">
+        <div id="menu" class="menu">
+            <a href="#recipes">Recipes</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+        <div class="instruction">
+            Please click ads 
+            <span class="icon">👇👇👇</span> 
+            Wait 30 Seconds 
+            <span class="icon">❤️</span> 
+            & Back 
+            <span class="icon">👈👈👈</span>
+        </div>
+        <div id="timer">30</div>
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+        <div class="text-section">
+            <h2>Delicious Recipes</h2>
+            <p>Explore our collection of mouth-watering recipes from around the world. Find step-by-step guides to create your favorite dishes at home.</p>
+        </div>
+        <div class="text-section">
+            <h2>Restaurant Reviews</h2>
+            <p>Read our detailed reviews of the best restaurants in town. Get the latest on dining experiences, food quality, and service.</p>
+        </div>
+        <div class="text-section">
+            <h2>Seasonal Ingredients to Try</h2>
+            <p>Discover the best seasonal ingredients to include in your meals. Learn how to use fresh, in-season produce to enhance the flavor and nutrition of your dishes.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Cooking Tips for Beginners</h2>
+            <p>If you're new to cooking, these essential tips will help you get started. From basic techniques to useful kitchen tools, we've got you covered.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Easy Weeknight Dinners</h2>
+            <p>Looking for quick and simple dinner ideas? Check out our collection of easy weeknight recipes that are perfect for busy schedules.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Exploring International Cuisines</h2>
+            <p>Embark on a culinary journey around the world with our international cuisine recipes. Learn how to make authentic dishes from various cultures.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Healthy Snacking Options</h2>
+            <p>Find nutritious and delicious snack ideas to keep you energized throughout the day. Discover options that are both healthy and satisfying.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Meal Prep for Busy Lives</h2>
+            <p>Save time and stay organized with meal prep tips. Learn how to plan and prepare meals in advance to make healthy eating easy and convenient.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Vegetarian and Vegan Recipes</h2>
+            <p>Explore a variety of vegetarian and vegan recipes that are packed with flavor and nutrition. Find plant-based meal ideas for every taste.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Decadent Desserts</h2>
+            <p>Indulge in our collection of decadent dessert recipes. From chocolate treats to fruity delights, find the perfect sweet ending for any meal.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Kitchen Gadgets Worth Investing In</h2>
+            <p>Upgrade your kitchen with gadgets that make cooking easier and more enjoyable. Discover which tools are worth the investment and why.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Host a Dinner Party</h2>
+            <p>Plan and host a memorable dinner party with these tips. From menu planning to setting the perfect table, get advice on creating a successful event.</p>
+        </div>
+        <div class="text-section">
+            <h2>Quick Breakfast Ideas</h2>
+            <p>Start your day right with these quick and easy breakfast recipes. Perfect for busy mornings and packed with nutrition to fuel your day.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Perfect Pasta</h2>
+            <p>Master the art of cooking pasta with our foolproof tips. Learn how to achieve the perfect texture and flavor for all your pasta dishes.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Budget-Friendly Meals</h2>
+            <p>Enjoy delicious meals without breaking the bank. Check out our budget-friendly recipes that are both affordable and tasty.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Cooking with Herbs and Spices</h2>
+            <p>Elevate your dishes with the right herbs and spices. Discover how to use these flavor enhancers to create mouth-watering meals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>All About Avocados</h2>
+            <p>Learn about the health benefits and versatile uses of avocados. Find new and exciting ways to incorporate them into your diet.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Perfecting Your Baking Skills</h2>
+            <p>Get tips and techniques for baking success. From cakes to cookies, learn how to bake like a pro with our expert advice.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Top 10 Comfort Foods</h2>
+            <p>Warm up with our top 10 comfort food recipes. These hearty dishes are sure to bring comfort and satisfaction to your meals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Delicious Smoothie Recipes</h2>
+            <p>Boost your health with tasty and nutritious smoothies. Find recipes that are perfect for breakfast, snacks, or a refreshing treat.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Cooking for Special Diets</h2>
+            <p>Discover recipes and tips for cooking with special dietary needs. Whether you're gluten-free, dairy-free, or following another diet, we've got you covered.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Choose the Best Olive Oil</h2>
+            <p>Find out how to select high-quality olive oil for your cooking. Learn about different types and what to look for when buying.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Easy Homemade Sauces</h2>
+            <p>Add flavor to your dishes with easy homemade sauces. From marinara to pesto, these recipes will enhance your meals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Healthy Eating on the Go</h2>
+            <p>Stay healthy while on the go with our tips for portable meals and snacks. Perfect for busy lifestyles and travel.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Top 5 Kitchen Essentials</h2>
+            <p>Equip your kitchen with the essentials every home cook needs. Discover the must-have tools and gadgets for efficient cooking.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Summer BBQ Recipes</h2>
+            <p>Fire up the grill with our best summer BBQ recipes. Enjoy delicious grilled meats, vegetables, and sides perfect for outdoor gatherings.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Homemade Bread</h2>
+            <p>Experience the joy of baking your own bread. Follow our step-by-step guide to create fresh, homemade bread right from your kitchen.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Cooking with Seasonal Fruits</h2>
+            <p>Incorporate seasonal fruits into your cooking for fresh and flavorful dishes. Discover recipes that highlight these fruits at their peak.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Ultimate Guide to Smoothie Bowls</h2>
+            <p>Create visually stunning and nutritious smoothie bowls. Learn how to make these tasty and Instagram-worthy bowls at home.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Perfectly Roast Vegetables</h2>
+            <p>Get the best results from your roasted vegetables with our tips and techniques. Enjoy tender, flavorful veggies every time.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Creative Salad Recipes</h2>
+            <p>Elevate your salad game with creative and delicious recipes. Find new ways to enjoy healthy and satisfying salads.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Your Own Pasta</h2>
+            <p>Discover the art of making fresh pasta from scratch. Our guide covers everything from mixing the dough to rolling and cutting.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Fun Cooking Activities for Kids</h2>
+            <p>Engage kids in the kitchen with fun and easy cooking activities. Discover recipes and projects that are perfect for little chefs.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Delicious Vegan Desserts</h2>
+            <p>Indulge in our selection of delicious vegan desserts. These sweet treats are sure to satisfy your cravings without any animal products.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Homemade Ice Cream</h2>
+            <p>Beat the heat with homemade ice cream. Learn how to create creamy and delicious flavors with or without an ice cream maker.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Healthy Meal Ideas for Kids</h2>
+            <p>Find healthy and kid-friendly meal ideas that the whole family will love. Discover recipes that are both nutritious and enjoyable for children.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Brew Perfect Coffee</h2>
+            <p>Start your day with the perfect cup of coffee. Learn the techniques and tips for brewing coffee like a barista at home.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Simple Dinners for Busy Nights</h2>
+            <p>Get quick and simple dinner recipes for those busy nights. Find meals that are easy to prepare and packed with flavor.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Guide to Cooking Meat Perfectly</h2>
+            <p>Achieve the perfect cook on all types of meat with our comprehensive guide. Learn about different cooking methods and techniques.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Delicious Vegan Smoothies</h2>
+            <p>Try our tasty vegan smoothies that are both nutritious and satisfying. Perfect for a healthy snack or breakfast option.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Homemade Soups</h2>
+            <p>Warm up with homemade soups that are both comforting and flavorful. Discover recipes for classic and innovative soup options.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Festive Holiday Recipes</h2>
+            <p>Get inspired for the holidays with our festive recipes. From appetizers to desserts, find everything you need for your holiday meals.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Quick and Easy Appetizers</h2>
+            <p>Serve up delicious appetizers that are quick and easy to prepare. Perfect for parties, gatherings, or just a casual snack.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Top Tips for Successful Meal Planning</h2>
+            <p>Make meal planning easier with our top tips and strategies. Learn how to plan your meals for a healthier and more organized week.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Cook Fish Perfectly</h2>
+            <p>Get tips and techniques for cooking fish to perfection. Learn how to achieve the ideal texture and flavor for all types of fish.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Creative Ways to Use Leftovers</h2>
+            <p>Transform your leftovers into new and exciting meals. Discover creative recipes and ideas to make the most of your leftovers.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>Guide to Cooking Grains</h2>
+            <p>Master the art of cooking various grains with our guide. Learn the best methods for preparing rice, quinoa, barley, and more.</p>
+        </div>
+        
+        <div class="text-section">
+            <h2>How to Make Your Own Granola</h2>
+            <p>Create your own granola with our easy recipe. Enjoy a healthy and customizable breakfast or snack option.</p>
+        </div>                
+        <button id="continue-btn" onclick="redirectToGoogle()">CONTINUE</button>
+        <div class="ad-placeholder">
+            <!-- Ad Space Available -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Food Blog. All rights reserved.</p>
+        <a href="#recipes">Recipes</a> | 
+        <a href="#reviews">Reviews</a> | 
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        let timeLeft = 10;
+        const timerElement = document.getElementById('timer');
+        const continueBtn = document.getElementById('continue-btn');
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerElement.textContent = 'Time\'s up! Go End ';
+                continueBtn.style.display = 'inline-block';
+            }
+        }, 1000);
+
+        function redirectToGoogle() {
+            window.location.href = 'https://kunaldaksh.github.io/modiurl/';
+        }
+    </script>
+
+</body>
+</html>
